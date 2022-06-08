@@ -17,8 +17,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   </head>
   <body>
-    <div class="content">
+    <div class="content position-relative">
       <%= yield %>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/dmbf29" target="_blank"><i class="fab fa-github"></i></a>
     </div>
     <%= javascript_include_tag "bundle" %>
   </body>
