@@ -200,11 +200,11 @@ input {
 }
 
 .creditcard .grey {
-  fill: #bdbdbd;
+  fill: rgba(225, 60, 40, 0.5);
 }
 
 .creditcard .greydark {
-  fill: #616161;
+  fill: #e13c28;
 }
 
 /* FRONT OF CARD */
@@ -362,10 +362,6 @@ input {
   .form-container {
     margin-top: 1rem !important;
   }
-  h1 {
-    font-size: 1.5rem;
-    font-weight: bolder;
-  }
   p {
     font-size: 14px;
   }
@@ -375,12 +371,5 @@ input {
 @media (min-width: 576px) {
   .card-margin {
     margin-top: 2rem !important;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .card-margin {
-    margin-top: 3rem !important;
   }
 }
