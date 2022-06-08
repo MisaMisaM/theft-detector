@@ -8,7 +8,6 @@ window.onload = function () {
   const output = document.getElementById("output");
   const ccicon = document.getElementById("ccicon");
   const ccsingle = document.getElementById("ccsingle");
-  const generatecard = document.getElementById("generatecard");
 
   let cctype = null;
 
@@ -95,9 +94,17 @@ window.onload = function () {
   //Mask the Expiration Date
   var expirationdate_mask = new IMask(expirationdate, {
     mask: "MM{/}YY",
-    groups: {
-      YY: new IMask.MaskedPattern.Group.Range([0, 99]),
-      MM: new IMask.MaskedPattern.Group.Range([1, 12]),
+    blocks: {
+      MM: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 12,
+      },
+      YY: {
+        mask: IMask.MaskedRange,
+        from: 0,
+        to: 99,
+      },
     },
   });
 
@@ -190,25 +197,6 @@ window.onload = function () {
     }
   });
 
-  //Generate random card number from list of known test numbers
-  const randomCard = function () {
-    let testCards = [
-      "4000056655665556",
-      "5200828282828210",
-      "371449635398431",
-      "6011000990139424",
-      "30569309025904",
-      "3566002020360505",
-      "6200000000000005",
-      "6759649826438453",
-    ];
-    let randomNumber = Math.floor(Math.random() * testCards.length);
-    cardnumber_mask.unmaskedValue = testCards[randomNumber];
-  };
-  generatecard.addEventListener("click", function () {
-    randomCard();
-  });
-
   // CREDIT CARD IMAGE JS
   document.querySelector(".preload").classList.remove("preload");
   document.querySelector(".creditcard").addEventListener("click", function () {
@@ -240,7 +228,7 @@ window.onload = function () {
 
   expirationdate_mask.on("accept", function () {
     if (expirationdate_mask.value.length == 0) {
-      document.getElementById("svgexpire").innerHTML = "01/23";
+      document.getElementById("svgexpire").innerHTML = "01/28";
     } else {
       document.getElementById("svgexpire").innerHTML =
         expirationdate_mask.value;
